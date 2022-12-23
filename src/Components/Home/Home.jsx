@@ -1,14 +1,24 @@
-
-
 import { useAuth } from "../../authContext"
+import Button from 'react-bootstrap/Button';
+
 
 export function Home() {
-    const {user} = useAuth()
+    const {user, logout, loading} = useAuth()
+    console.log(user);
 
-    console.log(user)
+ 
 
+    const handleLogout =async () => {
+        await logout();
+    };
+
+    if (loading) return <h1>Cargando</h1>
+    
   return (
-    <div>Home</div>
+    <div>
+        <h1>Bienvenido {user.email}</h1>
+        <Button onClick={handleLogout} variant="danger">Salir</Button>{' '}
+    </div>
   )
 }
 
