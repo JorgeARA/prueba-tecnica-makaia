@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import "../Login/login.css";
 import { useState } from "react";
 import {useAuth} from "../../authContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { async } from "@firebase/util";
 
 function Register() {
@@ -78,6 +78,9 @@ function Register() {
       <Button variant="primary" type="submit">
         Registrarse con Google
       </Button>
+      <p>
+        ¿Tienes una cuenta? <Link to="/login">Ingresa</Link>
+      </p>
     </Container>
   );
 }

@@ -2,23 +2,34 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import "../Login/login.css";
+// import "../Login/login.css";
 import { useState } from "react";
 import {useAuth} from "../../authContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { async } from "@firebase/util";
+import "../Home/home.css"
+
 
 function Login() {
   const [user, setUSer] = useState({
     email: "",
     password: "",
   });
-  const {login} = useAuth();
+  const {login, loginWithGoogle} = useAuth();
   const navigate = useNavigate()
   const [error, setError] = useState();
 
   const handleChange = ({ target: { name, value } }) => {
     setUSer({ ...user, [name]: value });
+  };
+
+  const handleGoogleSignin = async () => {
+    try {
+      await loginWithGoogle();
+      navigate("/");
+    } catch (error) {
+      setError(error.message);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -31,8 +42,8 @@ function Login() {
       if(error.code === "auth/internal-error") {
         setError("Correo invalido")
       }
-      // setError(error.message);
-    }
+      
+    };
     
   };
 
@@ -75,9 +86,15 @@ function Login() {
         </Button>
       </Form>
       <br />
-      <Button variant="primary" type="submit">
+      <Button onClick={handleGoogleSignin} variant="primary" type="submit">
         Ingresar con Google
       </Button>
+      <p >
+        ¿No tienes una cuenta? <Link to="/register">
+          Regístrate
+        </Link>
+      </p>
+
     </Container>
   );
 }
