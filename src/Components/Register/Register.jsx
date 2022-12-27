@@ -46,7 +46,7 @@ function Register() {
         <hr />
       </header>
 
-      {error && <p>{error}</p>};
+      {error && <p>{error}</p>}
 
       <Form className="login_form" onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
