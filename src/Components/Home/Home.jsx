@@ -1,6 +1,8 @@
 import { useAuth } from "../../authContext"
 import Button from 'react-bootstrap/Button';
 import { Container } from "react-bootstrap";
+import { AddTransactions } from "../Transaction/AddTransactions";
+import { ShowTransactions } from "../Transaction/ShowTransactions";
 
 
 export function Home() {
@@ -27,10 +29,14 @@ export function Home() {
           src="https://firebasestorage.googleapis.com/v0/b/prueba-tecnica-makaia.appspot.com/o/images%2FprismaFinal.png?alt=media&token=48c3b15d-e7e1-4b6e-b842-b40369b21595"
           alt="logo prisma"
         />
+        <Button onClick={handleLogout} variant="danger" className="button_logout">Salir</Button>{' '}
         <hr />
       </header>
         <h1>Bienvenido {user.displayName || user.email}</h1>
-        <Button onClick={handleLogout} variant="danger" className="button_logout">Salir</Button>{' '}
+        
+        <ShowTransactions/>
+        
+
     </Container>
   )
 }

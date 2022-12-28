@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { Home } from "./Components/Home/Home";
 import Register from "./Components/Register/Register";
 import { AddTransactions } from "./Components/Transaction/AddTransactions";
+import { ShowTransactions } from "./Components/Transaction/ShowTransactions";
 import { AuthProvider } from "./authContext";
 import { ProtectedRoute } from "./Components/ProtectedRoute/ProtectedRoute";
 
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/addtransactions" element={<AddTransactions />} />
+        <Route path="/showtransactions" element={<ShowTransactions />} />
       </Routes>
     </AuthProvider>
   );
