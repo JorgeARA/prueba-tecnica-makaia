@@ -1,4 +1,5 @@
-#Aplicación de registro de transacciones
+## Aplicación de registro de transacciones
+
 Esta aplicación se realiza como prueba técnica dentro del Bootcamp Makaia.
 La aplicación de registro de transacciones permite al usuario, mediante una interfaz amigable, realizar una completa gestión de sus transacciones; sean estas de gastos o ingresos de dinero. Puntualmente, permite crear y eliminar transacciones; así como también listar las que ya tiene almacenadas.
 
