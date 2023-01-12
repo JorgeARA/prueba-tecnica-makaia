@@ -12,6 +12,10 @@ import { db } from "../../firebase-config";
 export function AddTransactions() {
   const [description, setDescription] = useState("");
   const [amount, setAmount] = useState(0);
+  const [date, setDate] = useState('');
+  const [ingreso, setIngreso] = useState('');
+  const [gasto, setGasto] = useState('');
+
   const navigate = useNavigate();
   const transactionsCollection = collection(db, "transactions");
 
@@ -20,6 +24,8 @@ export function AddTransactions() {
     await addDoc(transactionsCollection, {
       description: description,
       amount: amount,
+      date: date,
+
     })
     navigate("/")
   }
@@ -36,27 +42,33 @@ export function AddTransactions() {
             onChange={(e) => setDescription(e.target.value)}
           />
         </Form.Group>
-        {/* <Form.Group>
-        <Form.Label>Tipo de movimiento</Form.Label>  
-          {["radio"].map((type) => (
-            <div key={`inline-${type}`} className="mb-3">
-              <Form.Check
-                inline
-                label="Ingreso"
-                name="group1"
-                type={type}
-                id={`inline-${type}-1`}
-              />
-              <Form.Check
-                inline
-                label="Gasto"
-                name="group1"
-                type={type}
-                id={`inline-${type}-2`}
-              />
-            </div>
-          ))}
+
+
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Fecha</Form.Label>
+          <Form.Control
+            name="trip-start"
+            type="date"
+            value={date}
+            onChange={(e) => setDate(e.target.value)}
+          />
+        </Form.Group>
+
+        {/* <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Tipo de transacción</Form.Label>
+          <fieldset>
+          <Form.Control type="radio" name="typetrans" value={ingreso}>
+          </Form.Control>
+          <Form.Control type="radio" name="typetrans" value={gasto}>
+
+          </Form.Control>
+          </fieldset>
+          
+       
+            
         </Form.Group> */}
+
+
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Valor</Form.Label>
           <Form.Control

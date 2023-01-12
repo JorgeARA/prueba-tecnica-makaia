@@ -48,6 +48,7 @@ export const ShowTransactions = () => {
         <tr key={transactions.id}>
           <td>{transactions.description}</td>
           <td>{transactions.amount}</td>
+          <td>{transactions.date}</td>
           <td><button onClick={ () => { deleteTransaction(transactions.id) } } className="btn btn-danger"><i className="fa-solid fa-trash"></i>Eliminar</button>
 </td>
         </tr>
