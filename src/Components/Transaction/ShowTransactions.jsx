@@ -21,6 +21,8 @@ export const ShowTransactions = () => {
   const transCollection = collection(db, "transactions");
   const [show, setShow] = useState(false);
 
+ 
+
   const getTransactions = async () => {
     const data = await getDocs(transCollection);
     // console.log(data.docs);
